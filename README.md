@@ -1,4 +1,4 @@
-<img align="center" src='./InterviewMap.png' />
+<img align="center" src='./src/assets/img/InterviewMap.png' />
 
 <h1 align="center">
   Interview Map
