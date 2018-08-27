@@ -8,10 +8,27 @@ import './assets/front.scss'
 /** instanceof **/
 // import './JS/base/instanceof';
 
-
+/** this **/
+import './JS/base/this';
 
 {
+    /**
+     * create title content
+     * @param id
+     * @param tit
+     * @returns {boolean}
+     */
+    let createTit = (id, tit) => {
+        const dom = document.getElementById(id);
+        try {
+            dom.innerHTML = tit;
+        }
+        catch (e) {
+            return false;
+        }
+    };
+
     window.onload = function () {
-        document.getElementById('interviewMap').innerHTML = 'InterviewMap';
+        createTit('interviewMap', 'InterviewMap')
     }
 }
