@@ -3,17 +3,27 @@ const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const portfinder = require('portfinder');
 
 const utils = require('./utils');
-const config = require('../config');
+
+//webpack config
 const baseWebpackConfig = require('./webpack.base.conf');
+const config = require('../config');
+
+//page config information
+const pagesConfig = require('../src/pages/page.config').pagesConfig;
+const commandConfig = require('../src/pages/page.config').command;
 
 
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
+
+console.log(PORT);
 
 
 //将两个配置对象，进行合并( 合并了base中的webpack配置项 )
@@ -26,9 +36,9 @@ const devWebpackConfig = merge(baseWebpackConfig, {
          * 当使用内联模式(inline mode)时，会在开发工具(DevTools)的控制台(console)显示消息, 可能的值有 none, error, warning 或者 info（默认值）
          */
         clientLogLevel: 'warning',
-        contentBase: './',// since we use CopyWebpackPlugin. false, 告诉服务器从哪个目录中提供内容。只有在你想要提供静态文件时才需要
+        contentBase: config.dev.contentBase,// since we use CopyWebpackPlugin. false, 告诉服务器从哪个目录中提供内容。只有在你想要提供静态文件时才需要
         /**
-         * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html。通过传入以下启用：
+         * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.ejs。通过传入以下启用：
          * 通过传入一个对象，比如使用 rewrites 这个选项，此行为可进一步地控制：
          */
         historyApiFallback: {
@@ -48,19 +58,26 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     },
     //新增的plugins
     plugins: [
+        require('autoprefixer'),
         //定义process.env
         new webpack.DefinePlugin({
             'process.env': require('../config/dev.env')
         }),
         // 模块热替换插件
         new webpack.HotModuleReplacementPlugin(),
-        //使用插件生成一个指定的模版。
-        new HtmlWebpackPlugin({
-            title: "My-interviewMap",
-            filename: "./dist/index.html",//输出html文件，打包时插入js,不用自己手动引入
-            inject: 'body',  //js插入的位置，true/'head'/'body'/false
-            hash: true
+
+        new ExtractTextPlugin({
+            filename: 'static/css/[name].[hash:7].css'
         }),
+        //设置每一次build之前先删除dist
+        new CleanWebpackPlugin(
+            ['dist/*',],　     //匹配删除的文件
+            {
+                root: __dirname,   //根目录
+                verbose: true,    //开启在控制台输出信息
+                dry: false     //启用删除文件
+            }
+        ),
         // copy custom static assets
         new CopyWebpackPlugin([
             {
@@ -68,9 +85,54 @@ const devWebpackConfig = merge(baseWebpackConfig, {
                 to: config.dev.assetsSubDirectory,
                 ignore: ['.*']
             }
-        ])
+        ]),
     ]
 });
+
+const styleList = ['assets/css/public.scss'];
+const scriptList = ['utils/index.js'];
+
+/**
+ * creat public path List (script / style)
+ * @param List
+ * @returns {*}
+ */
+let creatPublicList = (List) => {
+    return List.map(url => {
+        return path.resolve(__dirname, `../src/` + url);
+    });
+};
+
+//add entry and plugins
+if (pagesConfig && Array.isArray(pagesConfig)) {
+    pagesConfig.map(page => {
+        //entry list concat
+        devWebpackConfig.entry[page.name] = [
+            ...creatPublicList(commandConfig.css),//public style
+            ...creatPublicList(commandConfig.js),//public script
+            path.resolve(__dirname, `../src/pages/${page.jsEntry}`),//script for current page
+            path.resolve(__dirname, `../src/pages/${page.html}`)//page for current page
+        ];
+        devWebpackConfig.plugins.push(new HtmlWebpackPlugin({
+            filename: path.join(__dirname, (page.name === 'index' ? `../dist/` : `../dist/pages/`) + `${page.name}.html`),
+            template: path.join(__dirname, `../src/pages/${page.html}`),
+            inject: true,
+            chunks: [page.name],
+            inlineSource: '.(js|css)$',
+            minify: {
+                removeComments: true,
+                collapseWhitespace: true,
+                removeAttributeQuotes: true
+                // more options:
+                // https://github.com/kangax/html-minifier#options-quick-reference
+            },
+            chunksSortMode: 'dependency',
+            title: page.title || 'My interviewMap | JS'
+
+        }))
+    })
+}
+
 
 //确保启动程序时，如果端口被占用时，会通过portfinder来发布新的端口，然后输出运行的host字符串。
 module.exports = new Promise((resolve, reject) => {
