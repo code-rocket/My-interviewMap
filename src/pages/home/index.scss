@@ -1,0 +1,16 @@
+.layout {
+  width: 100%;
+  box-sizing: border-box;
+  transform: translateX(20px);
+  #interviewMap {
+    position: relative;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 600;
+    color: #46d7c4;
+    text-shadow: 0 0 0.1em #b2cad7;
+  }
+  .interviewMap-back {
+    width: 100%;
+  }
+}
