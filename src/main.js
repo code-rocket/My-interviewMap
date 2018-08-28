@@ -9,7 +9,7 @@ import './assets/front.scss'
 // import './JS/base/instanceof';
 
 /** this **/
-import './JS/base/this';
+import './pages/JS/base/this';
 
 {
     /**
