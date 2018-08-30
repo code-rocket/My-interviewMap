@@ -1,0 +1,61 @@
+@import "../../assets/css/variables";
+// --Sidebar
+#side-menu {
+  .sidebar-nav.navbar-collapse {
+    padding-left: 0;
+    padding-right: 0;
+    #side-menu-list {
+      //search
+      .sidebar-search {
+        padding: 15px;
+      }
+      ul li {
+        border-bottom: 1px solid darken($gray-lightest, 6.5%);
+        a {
+          &.active {
+            background-color: $gray-lighter;
+          }
+        }
+      }
+    }
+  }
+}
+
+#side-menu .arrow {
+  float: right;
+}
+
+#side-menu .fa.arrow:before {
+  content: "\f104";
+}
+
+#side-menu .active > a > .fa.arrow:before {
+  content: "\f107";
+}
+
+#side-menu .nav-second-level li,
+#side-menu .nav-third-level li {
+  border-bottom: none !important;
+}
+
+#side-menu .nav-second-level li a {
+  padding-left: 37px;
+}
+
+#side-menu .nav-third-level li a {
+  padding-left: 52px;
+}
+
+@media(min-width: 768px) {
+  #side-menu {
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+  }
+
+  .navbar-top-links .dropdown-messages,
+  .navbar-top-links .dropdown-tasks,
+  .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+}
