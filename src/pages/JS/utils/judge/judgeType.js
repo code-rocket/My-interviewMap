@@ -22,3 +22,4 @@ export const judgeType = (value) => {
     }
     return map[t];
 };
+
