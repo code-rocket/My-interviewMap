@@ -16,8 +16,9 @@ const baseWebpackConfig = require('./webpack.base.conf');
 const config = require('../config');
 
 //page config information
-const pagesConfig = require('../src/pages/page.config').pagesConfig;
-const commandConfig = require('../src/pages/page.config').command;
+const pageInfo = require('../src/pages/page.config');
+const pagesConfig = pageInfo.pagesConfig;
+const commandConfig = pageInfo.command;
 
 
 const HOST = process.env.HOST;
@@ -89,9 +90,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     ]
 });
 
-const styleList = ['assets/css/public.scss'];
-const scriptList = ['utils/index.js'];
-
 /**
  * creat public path List (script / style)
  * @param List
@@ -103,36 +101,48 @@ let creatPublicList = (List) => {
     });
 };
 
+/**
+ * modulesConfigHandle
+ * @param page
+ */
+let modulesConfigHandle = (page) => {
+    const defaultTit = 'My interviewMap';
+    const type = page.type || 'pages';
+    //mormal page entry need common script and css
+    devWebpackConfig.entry[page.name] = type === 'pages' ? [
+        ...creatPublicList(commandConfig.css),//public style
+        ...creatPublicList(commandConfig.js),//public script
+    ] : [];
+    //entry list concat
+    devWebpackConfig.entry[page.name].push(
+        path.resolve(__dirname, `../src/${type}/${page.jsEntry}`),//script for current page
+        path.resolve(__dirname, `../src/${type}/${page.html}`)//page for current page
+    );
+    devWebpackConfig.plugins.push(new HtmlWebpackPlugin({
+        filename: path.join(__dirname, (page.name === 'index' ? `../dist/` : `../dist/${type}/`) + `${page.name}.html`),
+        template: path.join(__dirname, `../src/${type}/${page.html}`),
+        inject: true,
+        chunks: [page.name],
+        inlineSource: '.(js|css)$',
+        minify: {
+            removeComments: true,
+            collapseWhitespace: true,
+            removeAttributeQuotes: true
+            // more options:
+            // https://github.com/kangax/html-minifier#options-quick-reference
+        },
+        chunksSortMode: 'dependency',
+        title: type === 'pages' ? (page.title || defaultTit) : defaultTit
+    }))
+};
+
+
 //add entry and plugins
 if (pagesConfig && Array.isArray(pagesConfig)) {
     pagesConfig.map(page => {
-        //entry list concat
-        devWebpackConfig.entry[page.name] = [
-            ...creatPublicList(commandConfig.css),//public style
-            ...creatPublicList(commandConfig.js),//public script
-            path.resolve(__dirname, `../src/pages/${page.jsEntry}`),//script for current page
-            path.resolve(__dirname, `../src/pages/${page.html}`)//page for current page
-        ];
-        devWebpackConfig.plugins.push(new HtmlWebpackPlugin({
-            filename: path.join(__dirname, (page.name === 'index' ? `../dist/` : `../dist/pages/`) + `${page.name}.html`),
-            template: path.join(__dirname, `../src/pages/${page.html}`),
-            inject: true,
-            chunks: [page.name],
-            inlineSource: '.(js|css)$',
-            minify: {
-                removeComments: true,
-                collapseWhitespace: true,
-                removeAttributeQuotes: true
-                // more options:
-                // https://github.com/kangax/html-minifier#options-quick-reference
-            },
-            chunksSortMode: 'dependency',
-            title: page.title || 'My interviewMap | JS'
-
-        }))
+        modulesConfigHandle(page)
     })
 }
-
 
 //确保启动程序时，如果端口被占用时，会通过portfinder来发布新的端口，然后输出运行的host字符串。
 module.exports = new Promise((resolve, reject) => {

@@ -1,4 +1,5 @@
 let path = require('path');
+const webpack = require('webpack');
 
 function resolve(dir) {
     return path.join(__dirname, '..', dir)
@@ -58,5 +59,11 @@ module.exports = {
             {test: /\.hbs$/, loader: "handlebars-loader"}
         ]
     },
-    plugins: [],
+    plugins: [
+        new webpack.ProvidePlugin({
+            "$": "jquery",
+            "jQuery": "jquery",
+            "window.jQuery": "jquery"
+        })
+    ],
 };
