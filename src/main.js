@@ -1,34 +1,30 @@
-import './assets/front.scss'
-/** 基础 - 四则运算符 **/
-// import './JS/operation/operation';
+import $ from "jquery";
+import './vendor/bootstrap/js/bootstrap';
+import './assets/styles/main.scss';
 
-/** 判断两个值 / 对象相等 **/
-// import './JS/judge/judgeEqual ';
 
-/** instanceof **/
-// import './JS/base/instanceof';
+import './components/side-menu/side-menu'
+import {loadHtml} from './utils/index'
 
-/** this **/
-import './pages/JS/base/this';
+console.log('main.js loaded');
 
-{
-    /**
-     * create title content
-     * @param id
-     * @param tit
-     * @returns {boolean}
-     */
-    let createTit = (id, tit) => {
-        const dom = document.getElementById(id);
-        try {
-            dom.innerHTML = tit;
-        }
-        catch (e) {
-            return false;
-        }
-    };
+$(document).ready(() => {
+	console.log('jquery works');
+	// loadHtml("#page-container", 0);
+	// menuClickHandler("#page-container");
+});
 
-    window.onload = function () {
-        createTit('interviewMap', 'InterviewMap')
-    }
+/**
+ * menuClickHandler
+ * @param target
+ */
+function menuClickHandler(target) {
+	const sideID = "#side-menu";
+	console.log($(sideID).find(">li"));
+	console.log('12312312312');
+	$(sideID).find(">li.side-menu-item").on("click", function () {
+		console.log('click');
+		let url = $(this).find(">a").attr("data-href");
+		loadHtml(target, url);
+	});
 }
