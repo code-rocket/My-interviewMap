@@ -1,0 +1,19 @@
+{{! ======= layouts ======= }}
+{{#> index }}
+{{! ======= Navigation ======= }}
+
+{{! ======= container ======= }}
+	<div id="wrapper">
+		<div class="overlay"></div>
+		{{! --- side-menu --- }}
+		<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation"></nav>
+		{{! --- page container --- }}
+		<div id="page-content-wrapper">
+			{{> hamburger layouts=this }}
+			<div class="container">
+				{{> @partial-block }}
+			</div>
+		</div>
+	</div>
+
+{{/ index }}
