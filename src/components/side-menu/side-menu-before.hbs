@@ -1,0 +1,36 @@
+
+<div class="navbar-default" role="navigation">
+	<div class="sidebar-nav navbar-collapse">
+		<ul class="nav side-menu-list">
+			{{#each menuData}}
+			{{! ============ first each loop ============ }}
+				<li class="side-menu-item {{#if name }} active{{/if}}">
+					<!--<a href="./pages/about.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
+					{{#if children}}
+						<a class="nav-link">
+							<i class="fa fa-fw {{icon}}"></i>
+							{{name}}{{current}}
+							<span class="fa arrow"></span>
+						</a>
+						<ul class="nav nav-second-level collapse">
+							{{#each children}}
+							{{! ============ second each loop ============ }}
+								<li class="side-menu-item">
+									<a class="nav-link" href="{{path}}">
+										{{name}}
+									</a>
+								</li>
+							{{/each}}
+						</ul>
+					{{else}}
+						<a class="nav-link" href="{{path}}">
+							<i class="fa fa-fw {{icon}}"></i>
+							{{name}}{{current}}
+						</a>
+					{{/if}}
+				</li>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+
