@@ -46,7 +46,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             title: "My-interviewMap",
-            filename: "./dist/index.ejs",//输出html文件，打包时插入js,不用自己手动引入
+            filename: "./dist/index.html",//输出html文件，打包时插入js,不用自己手动引入
             inject: 'body',  //js插入的位置，true/'head'/'body'/false
             hash: true
         }),

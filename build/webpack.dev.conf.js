@@ -24,7 +24,7 @@ const commandConfig = pageInfo.command;
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 
-console.log(PORT);
+
 
 
 //将两个配置对象，进行合并( 合并了base中的webpack配置项 )
@@ -39,7 +39,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         clientLogLevel: 'warning',
         contentBase: config.dev.contentBase,// since we use CopyWebpackPlugin. false, 告诉服务器从哪个目录中提供内容。只有在你想要提供静态文件时才需要
         /**
-         * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.ejs。通过传入以下启用：
+         * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html。通过传入以下启用：
          * 通过传入一个对象，比如使用 rewrites 这个选项，此行为可进一步地控制：
          */
         historyApiFallback: {
@@ -118,6 +118,7 @@ let modulesConfigHandle = (page) => {
         path.resolve(__dirname, `../src/${type}/${page.jsEntry}`),//script for current page
         path.resolve(__dirname, `../src/${type}/${page.html}`)//page for current page
     );
+    console.log(devWebpackConfig.entry[page.name]);
     devWebpackConfig.plugins.push(new HtmlWebpackPlugin({
         filename: path.join(__dirname, (page.name === 'index' ? `../dist/` : `../dist/${type}/`) + `${page.name}.html`),
         template: path.join(__dirname, `../src/${type}/${page.html}`),

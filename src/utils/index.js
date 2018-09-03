@@ -31,11 +31,11 @@ export const judgeType = (value) => {
  */
 export const loadHtml = (target, url) => {
     return new Promise((resolve, reject) => {
-        const sideID = "#side-menu-list";
+        const menuItemCls = "li.side-menu-item";
         const type = judgeType(url);
         console.log(type);
         if (type === "number") {
-            const li = $(sideID).find(">li").eq(url);
+            const li = $(menuItemCls).eq(url);
             const turl = li.find(">a").attr("data-href");
             console.log(li)
             console.log(turl)
@@ -46,7 +46,6 @@ export const loadHtml = (target, url) => {
             resolve();
         }
         else {
-            alert(12312312);
             reject('参数不符合格式');
         }
     });

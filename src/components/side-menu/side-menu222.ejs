@@ -7,18 +7,18 @@
 <!--*/-->
 <div class="navbar-default" role="navigation">
     <div class="sidebar-nav navbar-collapse">
-        <ul id="side-menu-list" class="nav">
-            <li class="sidebar-search">
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                </div>
-                <!-- /input-group -->
-            </li>
+        <ul class="nav side-menu-list">
+                <script type="text/x-handlebars-template" id="side-menu-list">
+                    {{#each menuData}}
+                    <li class="side-menu-item">
+                        <!--<a href="./pages/about.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
+                        <a href="javescript:void(0)" data-toggle="tab" data-href="{{path}}">
+                            <i class="fa fa-dashboard fa-fw"></i>
+                            {{name}}
+                        </a>
+                    </li>
+                    {{/each}}
+                </script>
             <li>
                 <!--<a href="./pages/about.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>-->
                 <a href="javescript:void(0)" data-toggle="tab" data-href="./pages/about.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
@@ -106,3 +106,6 @@
         </ul>
     </div>
 </div>
+
+
+

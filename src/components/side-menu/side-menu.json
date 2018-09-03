@@ -1,0 +1,41 @@
+{
+  "menuData": [
+    {
+      "name": "about",
+      "path": "./pages/about.html",
+      "icon": "fa-dashboard"
+    },
+    {
+      "name": "Basse",
+      "path": "./pages/about.html",
+      "icon": "fa-bar-chart-o",
+      "children": [
+        {
+          "name": "about",
+          "path": "./pages/about.html",
+          "icon": "fa-dashboard"
+        }
+      ]
+    },
+    {
+      "name": "about",
+      "path": "./pages/about.html",
+      "icon": "fa-table"
+    },
+    {
+      "name": "about",
+      "path": "./pages/about.html",
+      "icon": "fa-edit"
+    },
+    {
+      "name": "about",
+      "path": "./pages/about.html",
+      "icon": "fa-wrench"
+    },
+    {
+      "name": "about",
+      "path": "./pages/about.html",
+      "icon": "fa-sitemap"
+    }
+  ]
+}

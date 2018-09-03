@@ -2,6 +2,9 @@ import '../assets/css/reset.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.min.js'
 
+
+
+
 //MetisMenu CSS
 import '../vendor/metisMenu/metisMenu.min.css'
 // Morris Charts CSS

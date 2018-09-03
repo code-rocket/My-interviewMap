@@ -7,22 +7,39 @@ function resolve(dir) {
 
 module.exports = {
     // 配置入口
-    entry: {
-
-    },
+    entry: {},
     // 配置出口
     output: {
         path: path.join(__dirname, "../dist/"),
         filename: 'static/js/[name].[hash:7].js',
         publicPath: '/',
     },
+    resolve: {
+        extensions: ['.js', '.hbs', '.json'],
+        alias: {
+            '@': resolve('src'),
+        }
+    },
     devServer: {},
     //加载器
     module: {
-
         rules: [
             {test: /\.(htm|html)/, loader: 'html-loader'},
             {test: /\.(tpl|ejs)$/, loader: 'ejs-loader'},
+            {
+                test: /\.hbs$/,
+                loader: 'handlebars-loader',
+                // query: {
+                //     helperDirs: [
+                //         path.join(__dirname, 'src', 'helpers')
+                //     ],
+                //     partialDirs: [
+                //         path.join(__dirname, 'src', 'layouts'),
+                //         path.join(__dirname, 'src', 'components'),
+                //         path.join(__dirname, 'src', 'pages')
+                //     ]
+                // }
+            },
             {
                 test: /\.(scss|sass|css)$/,  // pack sass and css files
                 // loader: ExtractTextPlugin.extract({
@@ -56,7 +73,6 @@ module.exports = {
                     name: 'static/img/[name].[hash:7].[ext]'
                 }
             },
-            {test: /\.hbs$/, loader: "handlebars-loader"}
         ]
     },
     plugins: [

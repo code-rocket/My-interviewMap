@@ -28,7 +28,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         clientLogLevel: 'warning',
         contentBase: './',// since we use CopyWebpackPlugin. false, 告诉服务器从哪个目录中提供内容。只有在你想要提供静态文件时才需要
         /**
-         * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.ejs。通过传入以下启用：
+         * 当使用 HTML5 History API 时，任意的 404 响应都可能需要被替代为 index.html。通过传入以下启用：
          * 通过传入一个对象，比如使用 rewrites 这个选项，此行为可进一步地控制：
          */
         historyApiFallback: {
