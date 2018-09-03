@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/statickidz/webpack-handlebars-bootstrap.git"
+    "url": "git+https://github.com/Lensgcx/My-interviewMap.git"
   },
   "keywords": [
     "frontend",
@@ -23,7 +23,7 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/statickidz/webpack-handlebars-bootstrap/issues"
+    "url": "https://github.com/Lensgcx/My-interviewMap/issues"
   },
   "eslintConfig": {
     "env": {
@@ -38,7 +38,7 @@
       "semi": 2
     }
   },
-  "homepage": "https://github.com/statickidz/webpack-handlebars-bootstrap#readme",
+  "homepage": "https://github.com/Lensgcx/My-interviewMap/blob/master/README.md",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^7.1.4",
