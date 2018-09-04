@@ -1,16 +1,12 @@
 {
   "name": "My-interviewMap",
-  "author": "Broccoli spring( gcx )",
+  "author": "Broccoli spring( gcx ) <Lensgcx@163.com>",
   "version": "1.0.1",
   "description": "A clean Webpack 4 + Bootstrap 4 + Handlebars frontend project for My interviewMap.",
   "scripts": {
     "build": "webpack --config build/webpack-prod.config.js --colors --optimize-minimize",
     "dev": "webpack-dev-server --watch --colors --inline --progress --config build/webpack-dev.config.js --mode development",
     "before": "webpack-dev-server --config build/webpack-dev.config.js --watch --colors -d"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Lensgcx/My-interviewMap.git"
   },
   "keywords": [
     "frontend",
@@ -22,9 +18,6 @@
     "starter-kit"
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Lensgcx/My-interviewMap/issues"
-  },
   "eslintConfig": {
     "env": {
       "browser": true,
@@ -38,7 +31,6 @@
       "semi": 2
     }
   },
-  "homepage": "https://github.com/Lensgcx/My-interviewMap/blob/master/README.md",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-loader": "^7.1.4",
@@ -73,5 +65,13 @@
     "jquery": "^3.3.1",
     "popper.js": "^1.14.3",
     "bootstrap": "^3.3.7"
-  }
+  },
+  "homepage": "https://github.com/Lensgcx/My-interviewMap/blob/master/README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lensgcx/My-interviewMap.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lensgcx/My-interviewMap/issues"
+  },
 }
