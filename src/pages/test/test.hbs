@@ -1,12 +1,14 @@
 {{#> layouts }}
+    <main role="main" class="container">
 
-	<main role="main" class="container">
-
-		<div class="starter-template" style="padding: 3rem 1.5rem; text-align: center;">
-			<h1>Test Page</h1>
-			<p class="lead">Use this document as a way to quickly start any new project.</p>
-		</div>
-
-	</main>
-
+        <div class="starter-template" style="padding: 3rem 1.5rem; text-align: center;">
+            <h1>Test Page</h1>
+            <p class="lead">Use this document as a way to quickly start any new project.</p>
+        </div>
+    </main>
+    {{#section 'js'}}
+        <script type="application/javascript">
+            console.log('通过hbs helper 方法 动态渲染插入js片段');
+        </script>
+    {{/section}}
 {{/ layouts }}
