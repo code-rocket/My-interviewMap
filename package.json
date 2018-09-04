@@ -45,7 +45,6 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",
     "friendly-errors-webpack-plugin": "^1.6.1",
-    "fs": "^0.0.1-security",
     "handlebars": "^4.0.11",
     "handlebars-layouts": "^3.1.4",
     "handlebars-loader": "^1.7.0",
