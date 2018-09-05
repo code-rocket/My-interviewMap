@@ -1,7 +1,7 @@
 import Cookies from 'js-cookie';
 import status from './status';
 import pageConfig from './page.config';
-import {getPageConfig, navLink_active} from './utils';
+import {getPageConfig} from './utils';
 
 $(document).ready(() => {
     console.log('init.js loaded');
