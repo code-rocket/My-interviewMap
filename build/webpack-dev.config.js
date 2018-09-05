@@ -23,7 +23,7 @@ const Port = PORT || config.dev.port;
 
 
 /*-------------------------------------------------------*/
-/*   merge config (base and dev)             						 */
+/*   merge config (base and dev)             			 */
 /*   将两个配置对象，进行合并( 合并了base中的webpack配置项 )  */
 /*-------------------------------------------------------*/
 const devWebpackConfig = merge(baseWebpackConfig, {
@@ -44,7 +44,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
         },
         publicPath: config.dev.assetsPublicPath,
         host: HOST || config.dev.host, //默认是 localhost
-        port: PORT || config.dev.port,//指定要监听请求的端口号
+        port: Port,//指定要监听请求的端口号
         inline: true,//注意：不写hot: true，否则浏览器无法自动更新；也不要写colors:true，progress:true等，webpack2.x已不支持这些
         open: config.dev.autoOpenBrowser,//是否自动打开浏览器
         hot: config.dev.hot || true,//启用 webpack 的模块热替换特性
@@ -173,7 +173,6 @@ if (pageConf && Array.isArray(pageConf)) {
         )
     });
 }
-//
 
 /*-------------------------------------------------------------------------------------*/
 /*   start by Portfinder           						 															 					 */
