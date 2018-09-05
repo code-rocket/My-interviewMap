@@ -14,7 +14,7 @@
 			"name": "Basse",
 			"path": "",
 			"icon": "fa-bar-chart-o",
-			"describe": 1231231231,
+			"describe": "二级子菜单",
 			"children": [
 				{
 					"name": "home",
