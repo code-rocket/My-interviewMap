@@ -1,34 +1,34 @@
 <ul class="nav sidebar-nav">
-	<li class="sidebar-brand"><a href="#">Bootstrap 3</a></li>
-	{{#each menuData}}
-	{{! ============ first each loop ============ }}
-		{{#if children}}
-			<li class="side-menu-item dropdown">
-				<a href="javescript:void(0)" class="dropdown-toggle" data-toggle="dropdown">
-					<i class="fa fa-fw {{icon}}"></i>
-					{{name}}
-					<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu" role="menu">
-					<li class="dropdown-header">{{describe}}</li>
-					{{#each children}}
-					{{! ============ second each loop ============ }}
-						<li class="side-menu-item">
-							<a href="{{path}}">
-								{{name}}
-							</a>
-						</li>
-					{{/each}}
-				</ul>
-			</li>
-		{{else}}
-			<li class="side-menu-item">
-				<a href="{{path}}">
-					<i class="fa fa-fw {{icon}}"></i>
-					{{name}}
-				</a>
-			</li>
-		{{/if}}
-	{{/each}}
+    <li class="sidebar-brand"><a href="#">My-interviewMap</a></li>
+    {{#each menuData as |item firstIndex|}}
+    {{! ============ first each loop ============ }}
+        {{#if children}}
+            <li class="side-menu-item dropdown">
+                <a href="javescript:void(0)" class="dropdown-toggle" data-toggle="dropdown" firstIndex="{{firstIndex}}">
+                    <i class=" fa fa-fw {{icon}}"></i>
+                    {{name}}
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">{{describe}}</li>
+                    {{#each children}}
+                    {{! ============ second each loop ============ }}
+                        <li class="side-menu-item">
+                            <a class="side-menu-link" data-href="{{path}}" name="{{name}}">
+                                {{name}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{else}}
+            <li class="side-menu-item">
+                <a class="side-menu-link" data-href="{{path}}" name="{{name}}" firstIndex="{{firstIndex}}">
+                    <i class=" fa fa-fw {{icon}}"></i>
+                    {{name}}
+                </a>
+            </li>
+        {{/if}}
+    {{/each}}
 </ul>
 
