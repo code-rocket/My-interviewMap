@@ -1,13 +1,14 @@
 import $ from "jquery";
 import 'bootstrap';
 import './assets/styles/main.scss';
-
+import './init';
+import './components/page-title/page-title';
+import './components/hamburger/hamburger';
 import './components/side-menu/side-menu';
 
-console.log('main.js loaded');
-$(document).ready(() => {
-    console.log('jquery works');
 
+$(document).ready(() => {
+    console.log('main.js loaded');
 });
 
 
