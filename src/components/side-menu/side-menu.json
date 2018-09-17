@@ -1,37 +1,40 @@
 {
-	"menuData": [
-		{
-			"name": "home",
-			"path": "/index.html",
-			"icon": "fa-dashboard"
-		},
-		{
-			"name": "about",
-			"path": "/pages/about.html",
-			"icon": "fa-dashboard"
-		},
-		{
-			"name": "Basse",
-			"path": "",
-			"icon": "fa-bar-chart-o",
-			"describe": "二级子菜单",
-			"children": [
-				{
-					"name": "home",
-					"path": "/index.html",
-					"icon": "fa-dashboard"
-				},
-				{
-					"name": "about",
-					"path": "/pages/about.html",
-					"icon": "fa-dashboard"
-				}
-			]
-		},
-		{
-			"name": "test",
-			"path": "/pages/test.html",
-			"icon": "fa-dashboard"
-		}
-	]
+  "userInfo": {
+    "Avatar": "./static/img/user.jpg"
+  },
+  "menuData": [
+    {
+      "name": "home",
+      "path": "./index.html",
+      "icon": "glyphicon-home"
+    },
+    {
+      "name": "about",
+      "path": "./about.html",
+      "icon": "glyphicon-file"
+    },
+    {
+      "name": "Basse",
+      "path": "",
+      "icon": "glyphicon-book",
+      "describe": "二级子菜单",
+      "children": [
+        {
+          "name": "home",
+          "path": "./index.html",
+          "icon": "glyphicon-home"
+        },
+        {
+          "name": "about",
+          "path": "./about.html",
+          "icon": "glyphicon-file"
+        }
+      ]
+    },
+    {
+      "name": "test",
+      "path": "./test.html",
+      "icon": "glyphicon-cog"
+    }
+  ]
 }
