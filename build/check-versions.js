@@ -4,7 +4,7 @@
 'use strict';
 const chalk = require('chalk');
 const semver = require('semver');
-const packageConfig = require('../package123213.json');
+const packageConfig = require('../package.json');
 const shell = require('shelljs');
 
 function exec(cmd) {
