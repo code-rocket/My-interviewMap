@@ -1,46 +1,42 @@
-const pageConfig = {
+/* eslint-disable */
+module.exports = {
     command: {
         css: [],
         js: [
-            {name: 'main', path: './src/main.js'}
+            {name: 'main', path: './src/main.js'},
         ],
+        'x-icon': 'http://otaflb4oo.bkt.clouddn.com/CX-UI-Design/Logo/bigBear.ico'
     },
     pages: [
         {
-            name: 'home',
-            template: 'src/pages/home/home.hbs',
-            output: 'dist/index.html',
-            jsEntry: 'src/pages/home/home.js',
+            name: 'index',
+            template: 'src/pages/home/index.ejs',
+            output: 'dist/index.hbs',
+            jsEntry: 'src/pages/home/index.js',
             content: {
                 title: 'My interviewMap | Home',
-                page_title: 'Home',
                 description: 'Home Page'
             },
         },
         {
             name: 'about',
-            template: 'src/pages/about/about.hbs',
-            output: 'dist/pages/about.html',
+            template: 'src/pages/about/about.ejs',
+            output: 'dist/pages/about.hbs',
             jsEntry: 'src/pages/about/about.js',
             content: {
-                title: 'My interviewMap | About',
-                page_title: 'About',
-                description: 'About Page'
+                title: 'My interviewMap | about',
+                description: 'about Page'
             },
         },
         {
-            name: 'test',
-            template: 'src/pages/test/test.hbs',
-            output: 'dist/pages/test.html',
-            jsEntry: '',
+            name: 'about',
+            template: 'src/pages/contact/contact.ejs',
+            output: 'dist/pages/contact.html',
+            jsEntry: 'src/pages/contact/contact.js',
             content: {
-                title: 'My interviewMap | Test',
-                page_title: 'Test',
-                description: 'Test Page'
+                title: 'My interviewMap | contact',
+                description: 'contact Page'
             },
         }
     ]
 };
-
-
-module.exports = pageConfig;
