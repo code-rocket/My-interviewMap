@@ -1,87 +1,32 @@
-let path = require('path');
-const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const glob = require("glob");
+const purifyCssWebpack = require("purifycss-webpack");//消除冗余的css
+const CopyWebpackPlugin = require("copy-webpack-plugin");//静态资源输出
 
-function resolve(dir) {
-    return path.join(__dirname, '..', dir)
-}
+const utils = require('./utils');
+const config = require('../config');
+const rules = require("./webpack.rules.conf.js");
+const webpackCreateTemp = require('./webpack.create.temp');
 
-const destPath = path.join(__dirname, '../dist');
 
-module.exports = {
-    devtool: 'cheap-eval-source-map',
-    entry: {},
-    output: {
-        path: path.join(__dirname, '../dist'),
-        filename: './assets/scripts/[name].[hash].js'
+const baseWebpackConfig = {
+    entry: utils.getEntry(),
+    module: {
+        rules: [...rules]
     },
     resolve: {
-        extensions: ['.js', '.hbs', '.json'],
         alias: {
-            '@': resolve('src'),
+            '@': path.resolve(__dirname, '../src')
         }
     },
-    devServer: {},
-    //加载器
-    module: {
-        rules: [
-            {test: /\.(htm|html)/, loader: 'html-loader'},
-            {test: /\.(tpl|ejs)$/, loader: 'ejs-loader'},
-            {
-                test: /\.hbs$/,
-                loader: 'handlebars-loader',
-                query: {
-                    helperDirs: [
-                        path.resolve(__dirname, '..', 'entries/helpers')
-                    ],
-                    partialDirs: [
-                        path.join(__dirname, '../src', 'pages'),
-                        path.join(__dirname, '../src/pages', 'layouts'),
-                        path.join(__dirname, '../src', 'pages/home'),
-                        path.join(__dirname, '../src', 'pages/about'),
-                        path.join(__dirname, '../src', 'components'),
-                        path.join(__dirname, '../src', 'components/nav-bar'),
-                        path.join(__dirname, '../src', 'components/side-menu'),
-                        path.join(__dirname, '../src', 'components/hamburger'),
-                    ]
-                }
-            },
-            {
-                test: /\.(scss|sass|css)$/,  // pack sass and css files
-                // loader: ExtractTextPlugin.extract({
-                //         fallback: "style-loader",
-                //         use: "css-loader!postcss-loader!sass-loader"
-                //     }
-                // )
-                use: [
-                    'style-loader',
-                    {loader: 'css-loader', options: {importLoaders: 2}},  //2代表css-loader后还需要几个loader
-                    {loader: 'postcss-loader', options: {plugins: [require("autoprefixer")("last 100 versions")]}},
-                    'sass-loader'
-                ]
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader"
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
-                loader: 'file-loader'
-            },
-            {
-                //图片加载器，雷同file-loader，更适合图片，可以将较小的图片转成base64，减少http请求
-                //如下配置，将小于8192byte的图片转成base64码
-                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-                loader: 'url-loader?limit=8192&name=images/[hash].[ext]',
-                options: {
-                    limit: 10000,
-                    name: 'static/img/[name].[hash:7].[ext]'
-                }
-            },
-        ]
+    //将外部变量或者模块加载进来
+    externals: {
+        // 'jquery': 'window.jQuery'
     },
     plugins: [
+        // 全局暴露统一入口
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -90,11 +35,40 @@ module.exports = {
             'window.Tether': 'tether',
             Popper: ['popper.js', 'default'],
         }),
+
+        //copy custom static assets ( 静态资源输出 )
         new CopyWebpackPlugin([
-            {from: './src/assets/img', to: './assets/img'}
+            {
+                from: path.resolve(__dirname, '../static'),
+                to: config.build.assetsSubDirectory,
+                ignore: ['.*']
+            },
+            {
+                from: path.resolve(__dirname, '../src/assets/img'),
+                to: path.resolve(__dirname, '../dist/static/img'),
+                ignore: ['.*']
+            }
         ]),
-        new CopyWebpackPlugin([
-            {from: './src/assets/fonts', to: './assets/fonts'}
-        ])
+
+        //消除冗余的css代码
+        // new purifyCssWebpack({
+        //     paths: glob.sync(path.join(__dirname, "../src/pages/*/*.hbs"))
+        // }),
+
     ],
+    node: {
+        // prevent webpack from injecting useless setImmediate polyfill because Vue
+        // source contains it (although only uses it if it's native).
+        setImmediate: false,
+        // prevent webpack from injecting mocks to Node native modules
+        // that does not make sense for the client
+        dgram: 'empty',
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty',
+        child_process: 'empty'
+    }
+
 };
+
+module.exports = merge(webpackCreateTemp, baseWebpackConfig);
