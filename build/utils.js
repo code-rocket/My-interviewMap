@@ -11,7 +11,7 @@ const config = require('../config');//config目录中的index文件
 
 
 //这是一个json文件，加载过来之后，会变成一个对象
-const packageConfig = require('../package123213.json');
+const packageConfig = require('../package.json');
 
 /**
  * assetsPath
