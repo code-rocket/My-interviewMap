@@ -17,7 +17,7 @@ const webpackConfig = {
         path: config.dev.assetsRoot,
         // 打包多出口文件
         filename: utils.assetsPath('js/[name].bundle.js'),
-        publicPath:config.dev.assetsPublicPath
+        publicPath: config.dev.assetsPublicPath
     },
     // cheap-module-eval-source-map is faster for development
     // 增加了 devtools，通过注释的英文翻译，可以知道cheap-module-eval-source-map使得开发更快
