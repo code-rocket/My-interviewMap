@@ -1,5 +1,5 @@
-import {Hbs, getPageConfig} from '../../utils/index';
-import pageConfig from '../../page.config';
+import {Hbs, getPageConfig, judgeType} from '../../utils/index';
+// import pageConfig from '../../page.config';
 import status from '../../status';
 import Cookies from 'js-cookie';
 
@@ -13,11 +13,6 @@ $(document).ready(() => {
     let HBS = new Hbs();
     HBS.directImport(sideMenuTemp, '#sidebar-wrapper', menuData);//导入侧边栏
 
-    // HBS.compileImport('#side-menu-temp', '#side-menu', menuData).then(() => {
-    //
-    // });
-
-
     //  sidebar dom
     let sidebarNav = $('#sidebar-wrapper .sidebar-nav');
 
@@ -30,7 +25,8 @@ $(document).ready(() => {
     function initActive() {
         const nav_link = sidebarNav.find("a.side-menu-link");
         const nav_list = Array.prototype.slice.call(nav_link);//get a.nav-link array
-        const index = Cookies.get('menu_status').activeIndex || status.menu_status.activeIndex;
+        const ms = Cookies.get('menu_status') || status.menu_status;
+        const index = judgeType(ms) === 'string' ? JSON.parse(ms).activeIndex : ms.activeIndex;
         nav_list.forEach((a, i) => {
             $(a).removeClass('active');
             if (i === index) {
@@ -44,7 +40,6 @@ $(document).ready(() => {
         const target = e.target || e.srcElement;
         if (!!target && target.className.toLowerCase() === 'side-menu-link') {
             const url = $(target).attr("data-href");
-            const page_name = $(target).attr("name");
             let nav_link = Array.prototype.slice.call($(this).find("a.side-menu-link"));//get a.nav-link array
             const index = Array.prototype.indexOf.call(nav_link, target);//a标签 下标索引
             nav_link.forEach((a, i) => {
@@ -53,8 +48,10 @@ $(document).ready(() => {
                     $(a).addClass('active');
                 }
             });
-            const pageConf = getPageConfig(pageConfig.pages, page_name);
-            Cookies.set('page_info', pageConf);
+
+            const ms = JSON.parse(Cookies.get('menu_status'));
+            ms.activeIndex = index;
+            Cookies.set('menu_status', ms);
             window.location.href = url;
         }
     }
