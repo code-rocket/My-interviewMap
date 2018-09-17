@@ -38,6 +38,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "compression-webpack-plugin": "^2.0.0",
     "copy-webpack-plugin": "^4.5.1",
     "cross-env": "^5.1.5",
     "css-loader": "^0.28.11",
