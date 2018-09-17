@@ -1,59 +1,59 @@
-@import "../common/variables";
+@import "../../assets/css/variables";
 // Top Navigation
 .navbar-top-links {
-	margin-right: 0;
+  margin-right: 0;
 }
 
 .navbar-top-links li {
-	display: inline-block;
+  display: inline-block;
 }
 
 .navbar-top-links li:last-child {
-	margin-right: 15px;
+  margin-right: 15px;
 }
 
 .navbar-top-links li a {
-	padding: 15px;
-	min-height: $head-Height - 1px;
+  padding: 15px;
+  min-height: $head-Height - 1px;
 }
 
 .navbar-top-links .dropdown-menu li {
-	display: block;
+  display: block;
 }
 
 .navbar-top-links .dropdown-menu li:last-child {
-	margin-right: 0;
+  margin-right: 0;
 }
 
 .navbar-top-links .dropdown-menu li a {
-	padding: 3px 20px;
-	min-height: 0;
+  padding: 3px 20px;
+  min-height: 0;
 }
 
 .navbar-top-links .dropdown-menu li a div {
-	white-space: normal;
+  white-space: normal;
 }
 
 .navbar-top-links .dropdown-messages,
 .navbar-top-links .dropdown-tasks,
 .navbar-top-links .dropdown-alerts {
-	width: 310px;
-	min-width: 0;
+  width: 310px;
+  min-width: 0;
 }
 
 .navbar-top-links .dropdown-messages {
-	margin-left: 5px;
+  margin-left: 5px;
 }
 
 .navbar-top-links .dropdown-tasks {
-	margin-left: -59px;
+  margin-left: -59px;
 }
 
 .navbar-top-links .dropdown-alerts {
-	margin-left: -123px;
+  margin-left: -123px;
 }
 
 .navbar-top-links .dropdown-user {
-	right: 0;
-	left: auto;
+  right: 0;
+  left: auto;
 }

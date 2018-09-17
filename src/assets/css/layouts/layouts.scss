@@ -1,5 +1,5 @@
-@import "../common/variables";
-@import "../mixins/mixins.less";
+@import "../variables";
+@import "../mixins/mixins";
 
 // App
 #App {
@@ -8,12 +8,16 @@
   /*           Wrappers            */
   /*-------------------------------*/
   #wrapper {
+    @import "../../../components/hamburger/hamburger";
     height: calc(100vh - #{$head-Height});
     background: $theme-back;
     padding-left: 0;
     transition: all 0.5s ease;
     &.toggled {
       padding-left: $side-menu_width;
+      .hamburger {
+        left: 230px;
+      }
       #sidebar-wrapper {
         width: $side-menu_width;
       }
@@ -48,7 +52,7 @@
       height: 100vh;
       left: $side-menu_width;
       margin-left: -$side-menu_width;
-      background: #1a1a1a;
+      background-color: $side-menu_back;
       overflow-x: hidden;
       overflow-y: auto;
       transition: all 0.5s ease;
@@ -57,7 +61,7 @@
         display: none;
       }
     }
-    @import "../components/side-menu";
+    @import "../../../components/side-menu/side-menu";
 
     /*-------------------------------*/
     /*         page container        */
@@ -68,13 +72,16 @@
       //padding-top: 70px;
       min-height: 568px;
       .page-header {
-        margin-top: 16px;
-        h1 {
-          margin-left: 80px;
+        margin: 10px 0 16px;
+        h3 {
+          padding: 2px 0;
+          margin-left: 15px;
+          font-size: 20px;
+          small {
+            color: #ccc;
+          }
         }
       }
-      @import "../components/hamburger";
-
     }
   }
 }
