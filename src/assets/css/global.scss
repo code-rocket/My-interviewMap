@@ -1,0 +1,82 @@
+@import "./variables";
+@import "./mixins/mixins";
+/*-------------------------------*/
+/*           VARIABLES           */
+/*-------------------------------*/
+
+/* SOME DEMO STYLES - NOT REQUIRED */
+
+body {
+  height: 100%;
+  background-color: $theme-back;
+  position: relative;
+  overflow-x: hidden;
+  h1, h2, h3, h4, h5 {
+    color: rgba(255, 255, 255, 0.9);
+  }
+  p, blockquote {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+    &:hover {
+      color: #ffffff;
+    }
+  }
+}
+
+li {
+  list-style: none;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.gap-normal_m_l {
+  margin-left: 30px;
+}
+
+.indent-2em {
+  text-indent: 2em;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clear {
+  @include clearFloat;
+}
+
+.txtC {
+  text-align: center !important;
+}
+
+.txtL {
+  text-align: left !important;
+}
+
+.txtR {
+  text-align: right !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.oneline-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.not-render {
+  display: none;
+}
+
