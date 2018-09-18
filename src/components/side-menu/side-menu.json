@@ -32,6 +32,29 @@
       ]
     },
     {
+      "name": "JS",
+      "path": "",
+      "icon": "glyphicon-book",
+      "describe": "JS子菜单",
+      "children": [
+        {
+          "name": "运算",
+          "path": "./JS-operate.html",
+          "icon": ""
+        },
+        {
+          "name": "instanceof",
+          "path": "./instanceof.html",
+          "icon": ""
+        },
+        {
+          "name": "封装复用函数",
+          "path": "./JS-utils.html",
+          "icon": ""
+        }
+      ]
+    },
+    {
       "name": "test",
       "path": "./test.html",
       "icon": "glyphicon-cog"
