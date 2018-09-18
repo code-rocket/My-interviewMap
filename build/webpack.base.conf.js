@@ -52,7 +52,7 @@ const baseWebpackConfig = {
 
         //消除冗余的css代码
         // new purifyCssWebpack({
-        //     paths: glob.sync(path.join(__dirname, "../src/pages/*/*.hbs"))
+        //     paths: glob.sync(path.join(__dirname, "../src/pages/*/*JS-utils.hbs"))
         // }),
 
     ],
