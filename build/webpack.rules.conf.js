@@ -19,8 +19,7 @@ const rules = [
             partialDirs: [
                 path.join(__dirname, '../src', 'pages'),
                 path.join(__dirname, '../src/pages', 'layouts'),
-                path.join(__dirname, '../src', 'pages/home'),
-                path.join(__dirname, '../src', 'pages/about'),
+
                 path.join(__dirname, '../src', 'components'),
                 path.join(__dirname, '../src', 'components/nav-bar'),
                 path.join(__dirname, '../src', 'components/side-menu'),
