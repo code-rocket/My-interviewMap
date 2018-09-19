@@ -10,7 +10,7 @@ const htmlWebpackPlugin = require("html-webpack-plugin");// html模板
 let getHtmlConfig = function (name, chunks) {
     return {
         //webpack 默认dist下根目录 index.hbs 为入口文件，除非特别指定
-        template: `./src/pages/${name}/${name}.hbs`,
+        template: `./src/pages/${name}/index.hbs`,
         filename: `${name}.html`,
         favicon: './favicon.ico',
         title: `${name}`,
