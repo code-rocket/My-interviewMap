@@ -1,3 +1,9 @@
+/**
+ * -----------------------
+ * for home page
+ * -----------------------
+ */
+
 import './index.scss'
 
 $(document).ready(readyHandler);
