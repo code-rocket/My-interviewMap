@@ -1,3 +1,9 @@
+/**
+ * -----------------------
+ * for JS-utils page
+ * -----------------------
+ */
+
 import {judgeType, isEqual} from "../../utils";
 
 {
