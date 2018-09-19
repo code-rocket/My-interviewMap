@@ -21,8 +21,8 @@ module.exports = {
         {
             name: 'about',
             template: 'src/pages/about/about.ejs',
-            output: 'dist/pages/about.hbs',
-            jsEntry: 'src/pages/about/about.js',
+            output: 'dist/pages/index.hbs',
+            jsEntry: 'src/pages/about/index.js',
             content: {
                 title: 'My interviewMap | about',
                 description: 'about Page'
