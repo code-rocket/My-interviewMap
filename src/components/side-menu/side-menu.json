@@ -55,6 +55,19 @@
       ]
     },
     {
+      "name": "ES6",
+      "path": "",
+      "icon": "glyphicon-book",
+      "describe": "JS子菜单",
+      "children": [
+        {
+          "name": "let 和 const 命令",
+          "path": "./let_and_const.html",
+          "icon": ""
+        }
+      ]
+    },
+    {
       "name": "test",
       "path": "./test.html",
       "icon": "glyphicon-cog"
