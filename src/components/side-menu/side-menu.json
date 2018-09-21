@@ -64,6 +64,11 @@
           "name": "let 和 const 命令",
           "path": "./let_and_const.html",
           "icon": ""
+        },
+        {
+          "name": "解构赋值",
+          "path": "./terms_and_definitions.html",
+          "icon": ""
         }
       ]
     },
