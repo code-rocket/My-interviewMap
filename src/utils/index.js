@@ -236,3 +236,18 @@ export function getPageConfig(pagelist, name) {
         }
     }
 }
+
+/**
+ * constantize
+ * 将对象本身和其属性冻结，
+ * 添加新属性不起作用，严格模式时还会报错: Cannot xxxxx, object is not extensible
+ * @param obj
+ */
+export const constantize = (obj) => {
+    Object.freeze(obj);
+    Object.keys(obj).forEach((key, i) => {
+        if (typeof obj[key] === 'object') {
+            constantize(obj[key]);
+        }
+    });
+};
