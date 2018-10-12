@@ -8,7 +8,7 @@ import './components/side-menu/side-menu';
 import status from "./status";
 
 $(document).ready(() => {
-    console.log('main.js loaded');
+    console.log('main.js loaded！');
 
     const menu_status = status.menu_status;
     // store init menu status
