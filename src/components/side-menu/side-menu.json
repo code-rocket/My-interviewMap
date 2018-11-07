@@ -1,6 +1,6 @@
 {
   "userInfo": {
-    "Avatar": "./static/img/user.jpg"
+    "Avatar": "./static/img/user2.jpg"
   },
   "menuData": [
     {
@@ -68,6 +68,11 @@
         {
           "name": "解构赋值",
           "path": "./terms_and_definitions.html",
+          "icon": ""
+        },
+        {
+          "name": "数组操作",
+          "path": "./array.html",
           "icon": ""
         }
       ]
