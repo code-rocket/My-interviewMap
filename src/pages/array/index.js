@@ -63,7 +63,30 @@ console.log('===== Array for ES6 =====');
     }
     for (let [index, elem] of temp.entries()) {
         console.log(index, elem);// 0 "a"  1 "b"  2 "c"  3 "d"
-
     }
 }
+{
+    console.log('------ array indexOf function for ES6 ------');
+    //indexOf方法有两个缺点:
+    // 1: 是不够语义化，它的含义是找到参数值的第一个出现位置，所以要去比较是否不等于-1，表达起来不够直观。
+    // 2: 是，它内部使用严格相等运算符（===）进行判断，这会导致对NaN的误判。
 
+    console.log([1, 2, 3, {a: 123}].indexOf(2) !== -1);// true
+    console.log([1, 2, 3, {a: 123}].indexOf({a: 123}) !== -1);// false
+    console.log('------ array includes for ES6 ------');
+    console.log([1, 2, 3, {a: 123}].includes(2));   // true
+    console.log([1, 2, 3, {a: 123}].includes({a: 123})); // false
+
+
+    const contains = (() =>
+            Array.prototype.includes
+                ? (arr, value) => arr.includes(value)
+                : (arr, value) => arr.some(el => el === value)
+    )();
+    console.log(contains(['foo', 'bar'], 'baz'));// => false
+    console.log(contains([{a: [1, 2, 3]}, {b: 123}, 'bar'], {a: [1, 2, 3]}));// => false
+    console.log(contains([{a: [1, 2, 3]}, {b: 123}, 'bar'], 'bar'));// => true
+}
+{
+
+}
