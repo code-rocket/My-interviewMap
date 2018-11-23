@@ -74,6 +74,11 @@
           "name": "数组操作",
           "path": "./array.html",
           "icon": ""
+        },
+        {
+          "name": "promise对象",
+          "path": "./promise.html",
+          "icon": ""
         }
       ]
     },
