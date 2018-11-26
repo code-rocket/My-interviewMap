@@ -93,3 +93,5 @@ let promiseDemo = (index, status) => {
     //这表明，finally方法里面的操作，应该是与状态无关的，不依赖于 Promise 的执行结果。
     // finally本质上是then方法的特例。
 }
+
+
