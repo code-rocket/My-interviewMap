@@ -83,6 +83,19 @@
       ]
     },
     {
+      "name": "本地存储",
+      "path": "",
+      "icon": "glyphicon-book",
+      "describe": "本地存储子菜单",
+      "children": [
+        {
+          "name": "sessionStorage与localStorage",
+          "path": "./storage.html",
+          "icon": ""
+        }
+      ]
+    },
+    {
       "name": "test",
       "path": "./test.html",
       "icon": "glyphicon-cog"
