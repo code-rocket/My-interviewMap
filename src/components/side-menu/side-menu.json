@@ -96,6 +96,19 @@
       ]
     },
     {
+      "name": "算法",
+      "path": "",
+      "icon": "glyphicon-book",
+      "describe": "算法子菜单",
+      "children": [
+        {
+          "name": "扑克算法",
+          "path": "./poker-algorithm.html",
+          "icon": ""
+        }
+      ]
+    },
+    {
       "name": "test",
       "path": "./test.html",
       "icon": "glyphicon-cog"
