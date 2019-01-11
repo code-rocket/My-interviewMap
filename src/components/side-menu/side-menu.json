@@ -102,8 +102,8 @@
       "describe": "算法子菜单",
       "children": [
         {
-          "name": "扑克算法",
-          "path": "./poker-algorithm.html",
+          "name": "算法-1",
+          "path": "./algorithm-1.html",
           "icon": ""
         }
       ]
