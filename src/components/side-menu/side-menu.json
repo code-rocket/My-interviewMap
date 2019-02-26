@@ -105,6 +105,11 @@
           "name": "算法-1",
           "path": "./algorithm-1.html",
           "icon": ""
+        },
+        {
+          "name": "排序",
+          "path": "./sort.html",
+          "icon": ""
         }
       ]
     },
