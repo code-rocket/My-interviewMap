@@ -9,10 +9,10 @@
 <p align="center">
   <a href="https://gitter.im/interview-map/Lobby?utm_source=share-link&utm_medium=link&utm_campaign=share-link"><img src="https://img.shields.io/gitter/room/nwjs/nw.js.svg" alt="Gitter"></a>
   <a href="https://t.me/joinchat/GULTjw9enq3J4NQ6Yh5Ntw"><img src="https://img.shields.io/badge/chat-Telegram-brightgreen.svg" alt="Telegram"></a>
- 参考：
-  <a href="https://github.com/InterviewMap/CS-Interview-Knowledge-Map">
 </p>
-
+<p align="center">
+   <a href="https://github.com/InterviewMap/CS-Interview-Knowledge-Map">参考</a>
+</p>
 [English Version](./README-EN.md)
 ## Build Setup
 
